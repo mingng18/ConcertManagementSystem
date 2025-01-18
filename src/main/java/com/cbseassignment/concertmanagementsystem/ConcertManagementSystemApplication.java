@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ConcertManagementSystemApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConcertManagementSystemApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConcertManagementSystemApplication.class, args);
+    }
 
 }

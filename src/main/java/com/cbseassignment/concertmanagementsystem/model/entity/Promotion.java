@@ -1,16 +1,31 @@
-package com.cbseassignment.concertmanagementsystem.model.dto;
+package com.cbseassignment.concertmanagementsystem.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class PromotionDTO {
+@Entity
+@Table(name = "promotions")
+public class Promotion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String promoCode;
+
     private String name;
+
     private BigDecimal minimumTotalPrice;
+
     private Integer minimumTicketAmount;
+
     private Integer discountRatePercentage;
+
     private LocalDateTime effectiveStartTime;
+
     private LocalDateTime effectiveEndTime;
 
     public Long getId() {

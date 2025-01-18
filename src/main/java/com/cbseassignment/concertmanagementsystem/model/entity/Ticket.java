@@ -1,10 +1,21 @@
-package com.cbseassignment.concertmanagementsystem.model.dto;
+package com.cbseassignment.concertmanagementsystem.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
-public class TicketDTO {
+@Entity
+@Table(name = "tickets")
+public class Ticket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long concertId;
+
+    @ManyToOne
+    @JoinColumn(name = "concert_id", nullable = false)
+    private Concert concert;
+
     private String name;
     private BigDecimal price;
     private Integer stockQuantity;
@@ -17,12 +28,12 @@ public class TicketDTO {
         this.id = id;
     }
 
-    public Long getConcertId() {
-        return concertId;
+    public Concert getConcert() {
+        return concert;
     }
 
-    public void setConcertId(Long concertId) {
-        this.concertId = concertId;
+    public void setConcert(Concert concert) {
+        this.concert = concert;
     }
 
     public String getName() {

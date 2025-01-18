@@ -1,14 +1,27 @@
-package com.cbseassignment.concertmanagementsystem.model.dto;
+package com.cbseassignment.concertmanagementsystem.model.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ConcertDTO {
+@Entity
+@Table(name = "concerts")
+public class Concert {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long artist_id;
+
+    @ManyToOne
+    @JoinColumn(name = "artist_id", nullable = false)
+    private Artist artist;
+
     private String title;
     private String genre;
     private String location;
     private LocalDateTime startDateTime;
+
 
     public Long getId() {
         return id;
@@ -18,12 +31,12 @@ public class ConcertDTO {
         this.id = id;
     }
 
-    public Long getArtist_id() {
-        return artist_id;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setArtist_id(Long artist_id) {
-        this.artist_id = artist_id;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public String getTitle() {

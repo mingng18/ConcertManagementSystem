@@ -1,6 +1,5 @@
-package com.cbseassignment.concertmanagementsystem.service_impl;
+package com.cbseassignment.concertmanagementsystem.service;
 
-import com.cbseassignment.concertmanagementsystem.service.ConcertService;
 import com.cbseassignment.concertmanagementsystem.mapper.ConcertMapper;
 import com.cbseassignment.concertmanagementsystem.model.dto.ConcertDTO;
 import com.cbseassignment.concertmanagementsystem.model.entity.Artist;
@@ -27,7 +26,7 @@ public class ConcertServiceImpl implements ConcertService {
     public ConcertDTO getConcert(Long concertId) {
         return concertRepository.findById(concertId)
                 .map(ConcertMapper::toDTO)
-                .orElseThrow(() -> new RuntimeException("Concert not found with ID: " + concertId));
+                .orElseThrow(() -> new ResourceNotFoundException("Concert not found with ID: " + concertId));
     }
 
     @Override
@@ -39,12 +38,16 @@ public class ConcertServiceImpl implements ConcertService {
 
     @Override
     public void addConcert(ConcertDTO newConcertDTO) {
+        Artist artist = artistRepository.findById(newConcertDTO.getArtist_id())
+                .orElseThrow(() -> new ResourceNotFoundException("Artist with ID " + newConcertDTO.getArtist_id() + " not found"));
+
         Concert concert = ConcertMapper.toEntity(newConcertDTO);
+        concert.setArtist(artist);
         concertRepository.save(concert);
     }
 
     @Override
-    public ConcertDTO updateBook(Long concertId, ConcertDTO updateConcertDTO) {
+    public ConcertDTO updateConcert(Long concertId, ConcertDTO updateConcertDTO) {
         Concert existingConcert = concertRepository.findById(concertId)
                 .orElseThrow(() -> new ResourceNotFoundException("Concert not found with ID: " + concertId));
 
@@ -60,7 +63,7 @@ public class ConcertServiceImpl implements ConcertService {
     }
 
     @Override
-    public void deleteBook(Long concertId) {
+    public void deleteConcert(Long concertId) {
         if (!concertRepository.existsById(concertId)) {
             throw new ResourceNotFoundException("Concert not found with ID: " + concertId);
         }
