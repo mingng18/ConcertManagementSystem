@@ -7,7 +7,6 @@ import com.cbseassignment.concertmanagementsystem.model.entity.Promotion;
 import com.cbseassignment.concertmanagementsystem.model.entity.Ticket;
 import com.cbseassignment.concertmanagementsystem.model.entity.User;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +17,8 @@ public class OrderMapper {
     }
 
     public static OrderDTO toDTO(Order order) {
-        if (order == null) return null;
+        if (order == null)
+            return null;
 
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setId(order.getId());
@@ -38,8 +38,10 @@ public class OrderMapper {
         return orderDTO;
     }
 
-    public static Order toEntity(OrderDTO orderDTO, User user, List<Promotion> promotions, Map<Ticket, Integer> ticketQuantities) {
-        if (orderDTO == null) return null;
+    public static Order toEntity(OrderDTO orderDTO, User user, List<Promotion> promotions,
+            Map<Ticket, Integer> ticketQuantities) {
+        if (orderDTO == null)
+            return null;
 
         Order order = new Order();
         order.setId(orderDTO.getId());

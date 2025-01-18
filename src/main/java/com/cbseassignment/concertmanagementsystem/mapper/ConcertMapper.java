@@ -1,13 +1,9 @@
 package com.cbseassignment.concertmanagementsystem.mapper;
 
 import com.cbseassignment.concertmanagementsystem.model.dto.ConcertDTO;
-import com.cbseassignment.concertmanagementsystem.model.entity.Artist;
 import com.cbseassignment.concertmanagementsystem.model.entity.Concert;
-import com.cbseassignment.concertmanagementsystem.repository.ArtistRepo;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 
 public class ConcertMapper {
-
 
     // Convert Concert entity to ConcertDTO
     public static ConcertDTO toDTO(Concert concert) {

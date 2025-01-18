@@ -1,7 +1,6 @@
 package com.cbseassignment.concertmanagementsystem.model.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 
 @AllArgsConstructor
 public class TopSaleArtistDTO {

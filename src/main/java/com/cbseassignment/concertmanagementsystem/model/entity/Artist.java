@@ -1,7 +1,6 @@
 package com.cbseassignment.concertmanagementsystem.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "artists")

@@ -8,7 +8,6 @@ import com.cbseassignment.concertmanagementsystem.model.entity.Concert;
 import com.cbseassignment.concertmanagementsystem.model.entity.Order;
 import com.cbseassignment.concertmanagementsystem.model.entity.Ticket;
 import com.cbseassignment.concertmanagementsystem.repository.OrderRepo;
-import com.cbseassignment.concertmanagementsystem.repository.TicketRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,6 @@
 package com.cbseassignment.concertmanagementsystem.model.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +18,6 @@ public class Concert {
     private String genre;
     private String location;
     private LocalDateTime startDateTime;
-
 
     public Long getId() {
         return id;
