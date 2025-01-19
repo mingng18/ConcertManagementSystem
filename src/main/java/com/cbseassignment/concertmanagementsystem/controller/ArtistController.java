@@ -23,7 +23,12 @@ public class ArtistController {
 
     @GetMapping
     public ResponseEntity<List<Artist>> getAllArtists(@RequestParam(required = false) String gender) {
-        List<Artist> artists = artistService.getArtistList(gender);
+        List<Artist> artists;
+        if (gender != null && !gender.isEmpty()) {
+            artists = artistService.getArtistList(gender);
+        } else {
+            artists = artistService.getAllArtists();
+        }
         return new ResponseEntity<>(artists, HttpStatus.OK);
     }
 

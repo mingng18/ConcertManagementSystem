@@ -43,9 +43,10 @@ public class ConcertController {
 
     // Update an existing concert
     @PutMapping(value = "/{concertId}")
-    public ResponseEntity<ConcertDTO> updateConcert(@PathVariable Long concertId, @RequestBody ConcertDTO updateConcertDTO) {
-        ConcertDTO updatedConcert = concertService.updateConcert(concertId, updateConcertDTO);
+    public ResponseEntity<ConcertDTO> updateConcert(@PathVariable Long concertId,
+            @RequestBody ConcertDTO updateConcertDTO) {
         updateConcertDTO.setId(concertId);
+        ConcertDTO updatedConcert = concertService.updateConcert(concertId, updateConcertDTO);
         return new ResponseEntity<>(updatedConcert, HttpStatus.OK);
     }
 

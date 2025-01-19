@@ -14,7 +14,6 @@ public class ArtistServiceImpl implements ArtistService {
     @Autowired
     private ArtistRepo artistRepo;
 
-
     @Override
     public Artist getArtist(Long artistId) {
         return artistRepo.findById(artistId)
@@ -23,7 +22,10 @@ public class ArtistServiceImpl implements ArtistService {
 
     @Override
     public List<Artist> getArtistList(String gender) {
-        return artistRepo.findByGender(gender);
+        if (gender != null && !gender.isEmpty()) {
+            return artistRepo.findByGender(gender);
+        }
+        return getAllArtists();
     }
 
     @Override
@@ -45,5 +47,10 @@ public class ArtistServiceImpl implements ArtistService {
             throw new ResourceNotFoundException("Artist id " + artistId + " not found");
         }
         artistRepo.deleteById(artistId);
+    }
+
+    @Override
+    public List<Artist> getAllArtists() {
+        return artistRepo.findAll();
     }
 }
